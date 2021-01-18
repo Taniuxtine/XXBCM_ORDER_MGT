@@ -510,7 +510,7 @@ END extraction_pkg;
                 regexp_substr(regexp_replace(supp_contact_number, '[^0-9,]', ''), '[^,]+') contact1,
                 supp_email
             FROM
-                xxbcm_order_mgt_stage
+                (select * from xxbcm_order_mgt_stage order by order_ref)
             WHERE
                 order_ref NOT LIKE '%-%'
         ) LOOP
